@@ -7,9 +7,9 @@ namespace Malgorithms.Sort.Comparison.Options
     using Malgorithms.Enums;
 
     /// <summary>
-    /// Malgorithms.Sort.Comparison.QuickSortOptions
+    /// Malgorithms.Sort.Comparison.Options.QuickSortOptions
     /// </summary>
-    public class QuickSortOptions : ISortingAlgorithmOptions
+    public class QuickSortOptions : IPermutationAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the pivot selection.

@@ -1,8 +1,8 @@
-﻿// <copyright file="ISortingAlgorithmOptions.cs">
+﻿// <copyright file="IPermutationAlgorithmOptions.cs">
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.Sort
+namespace Malgorithms.Permutation
 {
     /// <summary>
     /// Malgorithms.Sort.ISortingAlgorithmOptions

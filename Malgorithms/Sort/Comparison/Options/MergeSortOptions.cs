@@ -7,9 +7,9 @@ namespace Malgorithms.Sort.Comparison.Options
     using Malgorithms.Enums;
 
     /// <summary>
-    /// Malgorithms.Sort.Comparison.MergeSortOptions
+    /// Malgorithms.Sort.Comparison.Options.MergeSortOptions
     /// </summary>
-    public class MergeSortOptions : ISortingAlgorithmOptions
+    public class MergeSortOptions : IPermutationAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the merge sort variant.

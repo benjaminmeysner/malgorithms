@@ -5,9 +5,9 @@
 namespace Malgorithms.Sort.Comparison.Options
 {
     /// <summary>
-    /// Malgorithms.Sort.Comparison.CycleSortOptions
+    /// Malgorithms.Sort.Comparison.Options.CycleSortOptions
     /// </summary>
-    public class CycleSortOptions : ISortingAlgorithmOptions
+    public class CycleSortOptions : IPermutationAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the sort range.

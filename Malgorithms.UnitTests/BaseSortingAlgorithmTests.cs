@@ -4,12 +4,10 @@
 
 namespace Malgorithms.UnitTests
 {
-    using Malgorithms.Enums;
     using Malgorithms.Sort;
-    using Malgorithms.Sort.Comparison;
+    using Malgorithms.Sort.Comparison.Options;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
-    using System.Linq;
 
     /// <summary>
     /// Malgorithms.UnitTests.BaseSortingAlgorithmTests

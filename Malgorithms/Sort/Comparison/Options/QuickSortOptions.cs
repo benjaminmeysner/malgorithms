@@ -9,7 +9,7 @@ namespace Malgorithms.Sort.Comparison.Options
     /// <summary>
     /// Malgorithms.Sort.Comparison.Options.QuickSortOptions
     /// </summary>
-    public class QuickSortOptions : IPermutationAlgorithmOptions
+    public class QuickSortOptions : ISortingAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the pivot selection.

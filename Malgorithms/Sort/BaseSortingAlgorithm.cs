@@ -31,7 +31,7 @@ namespace Malgorithms.Sort
         /// <typeparam name="T">The type of the source.</typeparam>
         /// <returns>The original source or an exception.</returns>
         /// <exception cref="ArgumentNullException">Thrown if the source is null.</exception>
-        public T[] SortValidation<T>(T[] source, IPermutationAlgorithmOptions options)
+        public T[] SortValidation<T>(T[] source, ISortingAlgorithmOptions options)
         {
             if (source is null)
             {

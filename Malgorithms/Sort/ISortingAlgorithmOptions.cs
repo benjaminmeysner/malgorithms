@@ -7,7 +7,7 @@ namespace Malgorithms.Sort
     /// <summary>
     /// Malgorithms.Sort.ISortingAlgorithmOptions
     /// </summary>
-    public interface IPermutationAlgorithmOptions
+    public interface ISortingAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the sort range.

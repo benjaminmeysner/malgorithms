@@ -9,7 +9,7 @@ namespace Malgorithms.Sort.Comparison.Options
     /// <summary>
     /// Malgorithms.Sort.Comparison.Options.MergeSortOptions
     /// </summary>
-    public class MergeSortOptions : IPermutationAlgorithmOptions
+    public class MergeSortOptions : ISortingAlgorithmOptions
     {
         /// <summary>
         /// Gets or sets the merge sort variant.

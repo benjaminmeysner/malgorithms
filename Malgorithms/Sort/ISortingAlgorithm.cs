@@ -16,7 +16,7 @@ namespace Malgorithms.Sort
         /// </summary>
         /// <typeparam name="T">The <paramref name="source"/> type.</typeparam>
         /// <param name="source">The source.</param>
-        /// <param name="comparison">The comparsion.</param>
+        /// <param name="comparison">The comparison.</param>
         /// <remarks>
         /// Comments are made above each class implementation.
         /// </remarks>

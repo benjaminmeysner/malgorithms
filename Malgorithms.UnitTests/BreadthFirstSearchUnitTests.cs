@@ -130,8 +130,7 @@ namespace Malgorithms.UnitTests
         ///     ├─n1
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(InvalidGraphException))]
-        public void BreadthFirstSearch_WithGraphCycle_Throws()
+        public void BreadthFirstSearch_WithGraphCycle0_Throws()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
@@ -141,7 +140,47 @@ namespace Malgorithms.UnitTests
             n2.Nodes.AddLast(n1);
             var order = new List<int>();
 
-            new BreadthFirstSearch().Traverse(n1);
+            new BreadthFirstSearch().Traverse(n1, x => order.Add(x.NodeId.Value));
+
+            CollectionAssert.AreEqual(order, new[] { 1, 2, 3 });
+        }
+
+        /// <summary>
+        /// [n1]
+        ///   └─n3
+        ///     ├─n1
+        ///     ├─n4
+        ///   └─n2
+        ///     ├─n1
+        ///     ├─n3
+        ///     ├─n4
+        ///       ├─n5
+        ///          ├─n2
+        ///          ├─n3
+        /// </summary>
+        [TestMethod]
+        public void BreadthFirstSearch_WithGraphCycle1_Throws()
+        {
+            var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
+            var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
+            var n3 = new MalgorithmUnitTestObject() { NodeId = 3 };
+            var n4 = new MalgorithmUnitTestObject() { NodeId = 4 };
+            var n5 = new MalgorithmUnitTestObject() { NodeId = 5 };
+            n1.Nodes.AddLast(n2);
+            n1.Nodes.AddLast(n3);
+            n2.Nodes.AddLast(n1);
+            n3.Nodes.AddLast(n1);
+            n2.Nodes.AddLast(n4);
+            n3.Nodes.AddLast(n4);
+            n4.Nodes.AddLast(n5);
+            n5.Nodes.AddLast(n3);
+            n5.Nodes.AddLast(n2);
+            n2.Nodes.AddLast(n3);
+            var order = new List<int>();
+
+            new BreadthFirstSearch().Traverse(n1, x => order.Add(x.NodeId.Value));
+
+            CollectionAssert.AreEqual(order, new[] { 1, 2, 3, 4, 5 });
         }
 
         /// <summary>

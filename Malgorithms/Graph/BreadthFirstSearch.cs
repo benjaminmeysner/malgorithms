@@ -82,6 +82,12 @@ namespace Malgorithms.Graph
             while (queue.Count != 0)
             {
                 T _current = queue.Dequeue();
+                if (visited.Contains(_current))
+                {
+                    // Cycle detected in graph.
+                    continue;
+                }
+
                 visited.Add(_current);
                 NodeAction(nodeAction, _current);
 
@@ -94,8 +100,8 @@ namespace Malgorithms.Graph
                 {
                     if (visited.Contains(node))
                     {
-                        // Tree structures cannot allow cycles, this is the definition of a tree.
-                        throw new InvalidGraphException(StandardText.CycleFoundInGraph);
+                        // Cycle detected in graph.
+                        continue;
                     }
 
                     queue.Enqueue(node);

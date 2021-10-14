@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Random\**" />
+    <EmbeddedResource Remove="Random\**" />
+    <None Remove="Random\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\StandardText.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -17,10 +23,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StandardText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Random\" />
   </ItemGroup>
 
 </Project>

@@ -120,6 +120,9 @@
   <data name="AlgorithmNotImplemented" xml:space="preserve">
     <value>This algorithm is not currently implemented.</value>
   </data>
+  <data name="CycleFoundInGraph" xml:space="preserve">
+    <value>A cycle was detected in this graph.</value>
+  </data>
   <data name="ParameterCannotBeNull" xml:space="preserve">
     <value>Parameter {0} cannot be null.</value>
   </data>

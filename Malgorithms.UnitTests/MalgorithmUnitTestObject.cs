@@ -4,10 +4,12 @@
 
 namespace Malgorithms.UnitTests
 {
+    using Malgorithms.Models;
+
     /// <summary>
     /// Malgorithms.UnitTests.MalgorithmUnitTestObject
     /// </summary>
-    public class MalgorithmUnitTestObject
+    public class MalgorithmUnitTestObject : Graph<MalgorithmUnitTestObject>
     {
         public int Id { get; set; }
 

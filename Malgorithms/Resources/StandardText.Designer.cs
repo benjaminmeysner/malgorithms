@@ -70,6 +70,15 @@ namespace Malgorithms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A cycle was detected in this graph..
+        /// </summary>
+        internal static string CycleFoundInGraph {
+            get {
+                return ResourceManager.GetString("CycleFoundInGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parameter {0} cannot be null..
         /// </summary>
         internal static string ParameterCannotBeNull {

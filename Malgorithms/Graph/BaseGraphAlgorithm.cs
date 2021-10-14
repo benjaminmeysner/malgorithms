@@ -23,7 +23,7 @@ namespace Malgorithms.Graph
         /// </returns>
         protected static bool HasNodes<T>(T graph) where T : Graph<T>
         {
-            return graph.Nodes.Any();
+            return graph.Nodes != null && graph.Nodes.Any();
         }
 
         /// <summary>

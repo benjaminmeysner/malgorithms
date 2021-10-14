@@ -75,40 +75,52 @@ namespace Malgorithms.Graph
         /// <returns>
         /// The node if it exists in the <paramref name="graph" />. Otherwise returns null.
         /// </returns>
-        /// <exception cref="Malgorithms.Exceptions.InvalidGraphException"></exception>
         private static T Traverse<T>(T graph, Queue<T> queue, List<T> visited, Func<T, bool> predicate = null, Action<T> nodeAction = null) where T : Graph<T>
         {
             queue.Enqueue(graph);
             while (queue.Count != 0)
             {
-                T _current = queue.Dequeue();
-                if (visited.Contains(_current))
+                T current = queue.Dequeue();
+                if (visited.Contains(current))
                 {
                     // Cycle detected in graph.
                     continue;
                 }
 
-                visited.Add(_current);
-                NodeAction(nodeAction, _current);
+                visited.Add(current);
+                NodeAction(nodeAction, current);
 
-                if (!(predicate is null) && predicate(_current))
+                if (!(predicate is null) && predicate(current))
                 {
-                    return _current;
+                    return current;
                 }
 
-                foreach (var node in _current.Nodes)
-                {
-                    if (visited.Contains(node))
-                    {
-                        // Cycle detected in graph.
-                        continue;
-                    }
-
-                    queue.Enqueue(node);
-                }
+                // Iterative, see below.
+                Traverse(current, queue, visited);
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Malgorithms.Graph.BreadthFirstSearch.Traverse
+        /// </summary>
+        /// <typeparam name="T">The <paramref name="graph" /> type.</typeparam>
+        /// <param name="graph">The graph.</param>
+        /// <param name="queue">The queue.</param>
+        /// <param name="visited">The visited.</param>
+        private static void Traverse<T>(T graph, Queue<T> queue, List<T> visited) where T : Graph<T>
+        {
+            foreach (var node in graph.Nodes)
+            {
+                if (visited.Contains(node))
+                {
+                    // Cycle detected in graph.
+                    continue;
+                }
+
+                queue.Enqueue(node);
+            }
         }
     }
 }

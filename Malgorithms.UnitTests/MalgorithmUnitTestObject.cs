@@ -9,7 +9,7 @@ namespace Malgorithms.UnitTests
     /// <summary>
     /// Malgorithms.UnitTests.MalgorithmUnitTestObject
     /// </summary>
-    public class MalgorithmUnitTestObject : Graph<MalgorithmUnitTestObject>
+    public class MalgorithmUnitTestObject : DirectedGraph<MalgorithmUnitTestObject>
     {
         public int Id { get; set; }
 

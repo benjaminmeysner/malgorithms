@@ -1,4 +1,4 @@
-﻿// <copyright file="Graph.cs">
+﻿// <copyright file="DirectedGraph.cs">
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
@@ -7,20 +7,20 @@ namespace Malgorithms.Models
     using System.Collections.Generic;
 
     /// <summary>
-    /// Malgorithms.Models.Graph
+    /// Malgorithms.Models.DirectedGraph
     /// </summary>
-    public class Graph<T> : IGraph<T>
+    public class DirectedGraph<T> : IDirectedGraph<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Graph{T}"/> class.
+        /// Initializes a new instance of the <see cref="DirectedGraph{T}"/> class.
         /// </summary>
-        public Graph() : this(new LinkedList<T>()) { }
+        public DirectedGraph() : this(new LinkedList<T>()) { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Graph{T}"/> class.
+        /// Initializes a new instance of the <see cref="DirectedGraph{T}"/> class.
         /// </summary>
         /// <param name="nodes">The nodes.</param>
-        public Graph(LinkedList<T> nodes)
+        public DirectedGraph(LinkedList<T> nodes)
         {
             Nodes = nodes;
         }

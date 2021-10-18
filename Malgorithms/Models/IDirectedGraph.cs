@@ -1,4 +1,4 @@
-﻿// <copyright file="IGraph.cs">
+﻿// <copyright file="IDirectedGraph.cs">
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
@@ -7,9 +7,9 @@ namespace Malgorithms.Models
     using System.Collections.Generic;
 
     /// <summary>
-    /// Malgorithms.Models.IGraph
+    /// Malgorithms.Models.IDirectedGraph
     /// </summary>
-    public interface IGraph<T>
+    public interface IDirectedGraph<T>
     {
         /// <summary>
         /// Gets or sets the node identifier.
@@ -20,7 +20,7 @@ namespace Malgorithms.Models
         public int? NodeId { get; set; }
 
         /// <summary>
-        /// Gets or sets the nodes.
+        /// Gets the nodes.
         /// </summary>
         /// <value>
         /// The nodes.

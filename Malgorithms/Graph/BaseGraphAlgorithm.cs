@@ -21,7 +21,7 @@ namespace Malgorithms.Graph
         /// <returns>
         /// True if has nodes else false.
         /// </returns>
-        protected static bool HasNodes<T>(T graph) where T : Graph<T>
+        protected static bool HasNodes<T>(T graph) where T : DirectedGraph<T>
         {
             return graph.Nodes != null && graph.Nodes.Any();
         }

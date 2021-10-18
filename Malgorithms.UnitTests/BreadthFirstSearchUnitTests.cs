@@ -4,7 +4,6 @@
 
 namespace Malgorithms.UnitTests
 {
-    using Malgorithms.Exceptions;
     using Malgorithms.Graph;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace Malgorithms.UnitTests
         /// [n1]
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_TraversalOrder0_ReturnsExpected()
+        public void BreadthFirstSearch_DirectedGraphWithOneTraversalOrder_ReturnsExpected()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var order = new List<int>();
@@ -27,6 +26,32 @@ namespace Malgorithms.UnitTests
             new BreadthFirstSearch().Traverse(n1, x => order.Add(x.NodeId.Value));
 
             CollectionAssert.AreEqual(order, new[] { 1 });
+        }
+
+        /// <summary>
+        /// [n1]
+        /// </summary>
+        [TestMethod]
+        public void BreadthFirstSearch_DirectedGraphWithOneFindExisting_ReturnsExpected()
+        {
+            var n1 = new MalgorithmUnitTestObject() { Name = "Ben" };
+
+            var result = new BreadthFirstSearch().Find(n1, x => x.Name == "Ben");
+
+            Assert.AreEqual(result, n1);
+        }
+
+        /// <summary>
+        /// [n1]
+        /// </summary>
+        [TestMethod]
+        public void BreadthFirstSearch_DirectedGraphWithOneFindNonExisting_ReturnsNull()
+        {
+            var n1 = new MalgorithmUnitTestObject() { Name = "Ben" };
+
+            var result = new BreadthFirstSearch().Find(n1, x => x.Name == "John");
+
+            Assert.AreEqual(result, null);
         }
 
         /// <summary>
@@ -41,7 +66,7 @@ namespace Malgorithms.UnitTests
         ///       ├─n8
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_TraversalOrder1_ReturnsExpected()
+        public void BreadthFirstSearch_DirectedGraphTraversalOrder1_ReturnsExpected()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
@@ -85,7 +110,7 @@ namespace Malgorithms.UnitTests
         ///       ├─n11
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_TraversalOrder2_ReturnsExpected()
+        public void BreadthFirstSearch_DirectedGraphTraversalOrder2_ReturnsExpected()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
@@ -130,7 +155,7 @@ namespace Malgorithms.UnitTests
         ///     ├─n1
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_WithGraphCycle0_Throws()
+        public void BreadthFirstSearch_DirectedGraphWithGraphCycle0_Throws()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
@@ -159,7 +184,7 @@ namespace Malgorithms.UnitTests
         ///          ├─n3
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_WithGraphCycle1_Throws()
+        public void BreadthFirstSearch_DirectedGraphWithGraphCycle1_Throws()
         {
             var n1 = new MalgorithmUnitTestObject() { NodeId = 1 };
             var n2 = new MalgorithmUnitTestObject() { NodeId = 2 };
@@ -193,15 +218,15 @@ namespace Malgorithms.UnitTests
         ///   ├─n5
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_SimpleTreeStructureFind_ReturnsExpected()
+        public void BreadthFirstSearch_DirectedGraphSimpleTreeStructureFind_ReturnsExpected()
         {
-            var n1 = new MalgorithmUnitTestObject() { Name = "Ben" };
-            var n2 = new MalgorithmUnitTestObject() { Name = "John" };
-            var n3 = new MalgorithmUnitTestObject() { Name = "Jemma" };
-            var n4 = new MalgorithmUnitTestObject() { Name = "Sophie" };
-            var n5 = new MalgorithmUnitTestObject() { Name = "Sarah" };
-            var n6 = new MalgorithmUnitTestObject() { Name = "Sally" };
-            var n7 = new MalgorithmUnitTestObject() { Name = "Serena" };
+            var n1 = new MalgorithmUnitTestObject() { Name = "Ben", NodeId = 1 };
+            var n2 = new MalgorithmUnitTestObject() { Name = "John", NodeId = 2 };
+            var n3 = new MalgorithmUnitTestObject() { Name = "Jemma", NodeId = 3 };
+            var n4 = new MalgorithmUnitTestObject() { Name = "Sophie", NodeId = 4 };
+            var n5 = new MalgorithmUnitTestObject() { Name = "Sarah", NodeId = 5 };
+            var n6 = new MalgorithmUnitTestObject() { Name = "Sally", NodeId = 6 };
+            var n7 = new MalgorithmUnitTestObject() { Name = "Serena", NodeId = 7 };
             n1.Nodes.AddLast(n2);
             n1.Nodes.AddLast(n3);
             n2.Nodes.AddLast(n4);
@@ -232,7 +257,7 @@ namespace Malgorithms.UnitTests
         ///       ├─n11
         /// </summary>
         [TestMethod]
-        public void BreadthFirstSearch_ComplexTreeStructureFind_ReturnsExpected()
+        public void BreadthFirstSearch_DirectedGraphComplexTreeStructureFind_ReturnsExpected()
         {
             var n1 = new MalgorithmUnitTestObject() { Name = "Ben" };
             var n2 = new MalgorithmUnitTestObject() { Name = "Barry" };
@@ -263,7 +288,6 @@ namespace Malgorithms.UnitTests
             n4.Nodes.AddLast(n9);
             n4.Nodes.AddLast(n10);
             n10.Nodes.AddLast(n14);
-            var order = new List<int>();
 
             var result = new BreadthFirstSearch().Find(n1, x => x.Name.StartsWith("V"));
 

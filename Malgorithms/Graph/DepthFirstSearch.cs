@@ -19,7 +19,7 @@ namespace Malgorithms.Graph
         public DepthFirstSearch() { }
 
         /// <summary>
-        /// <para />Depth-first search (BFS) is an algorithm for searching a graph or tree data structure for a node that satisfies a given property.
+        /// <para />Depth-first search (DFS) is an algorithm for searching a graph or tree data structure for a node that satisfies a given property.
         /// https://en.wikipedia.org/wiki/Depth-first_search
         /// <para />A DFS Search will be at worst O(|E| + |V|) (The sum of the edges + the sum of the vertices as at worst we will need to visit each node in the graph.
         /// <para />A full graph traversal will be worst case due to a complete traversal of the graph.
@@ -42,7 +42,7 @@ namespace Malgorithms.Graph
         }
 
         /// <summary>
-        /// <para />Depth-first search (BFS) is an algorithm for searching a graph or tree data structure for a node that satisfies a given property.
+        /// <para />Depth-first search (DFS) is an algorithm for searching a graph or tree data structure for a node that satisfies a given property.
         /// https://en.wikipedia.org/wiki/Depth-first_search
         /// <para />A DFS Search will be at worst O(|E| + |V|) (The sum of the edges + the sum of the vertices as at worst we will need to visit each node in the graph.
         /// <para />A full graph traversal will be worst case due to a complete traversal of the graph.

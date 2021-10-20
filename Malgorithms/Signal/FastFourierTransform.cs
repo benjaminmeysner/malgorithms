@@ -11,6 +11,8 @@ namespace Malgorithms.Signal
     /// <summary>
     /// Malgorithms.Signal.FastFourierTransform
     /// <para/>TODO: #1 Allow for signal length / sample count not a power of 2 (zero pad the signal).
+    /// <para/>TODO: #2 Iterative version, and allow for parallelisation.
+    /// 
     /// </summary>
     public class FastFourierTransform : BaseFastFourierTransform, IFourierTransform
     {
@@ -38,11 +40,10 @@ namespace Malgorithms.Signal
         /// <returns>
         /// Array of <see cref="{Complex}" />, the DFT of <paramref name="signal" />
         /// </returns>
-        public Complex[] Transform(Complex[] signal)
+        public Complex[] Transform(double[] signal)
         {
             SanitiseSignal(signal);
-            Transform(signal, signal.Length);
-            return null;
+            return Transform(DoubleToComplex(signal));
         }
 
         /// <summary>
@@ -51,25 +52,56 @@ namespace Malgorithms.Signal
         /// <para />https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm.
         /// </summary>
         /// <param name="signal">The signal.</param>
-        /// <param name="sampleCount">The sample count.</param>
-        private Complex[] Transform(Complex[] signal, int sampleCount)
-        {
-            //BitReverse(signal);
-            return null;
-        }
-
-        /// <summary>
-        /// <para />Compute the inverse FFT of a <see cref="Complex" /> typed <paramref name="signal" />.
-        /// <para />Cooley-Tukey algorithm is used if no such configuration is supplied.
-        /// </summary>
-        /// <param name="signal">The signal.</param>
         /// <returns>
         /// Array of <see cref="{Complex}" />, the DFT of <paramref name="signal" />
         /// </returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public Complex[] InverseTransform(Complex[] signal)
+        public Complex[] Transform(Complex[] signal)
         {
-            throw new NotImplementedException();
+            SanitiseSignal(signal);
+            Complex[] newSignal = new Complex[signal.Length];
+            Array.Copy(signal, newSignal, signal.Length);
+            Fft(newSignal, newSignal.Length);
+            return newSignal;
+        }
+
+        /// <summary>
+        /// <para />Compute the forward FFT of a <see cref="Complex" /> typed <paramref name="signal" />.
+        /// <para />Recursive Cooley-Tukey algorithm is used if no such configuration is supplied.
+        /// <para />https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm.
+        /// </summary>
+        /// <param name="signal">The signal.</param>
+        /// <param name="sampleCount">The sample count.</param>
+        private void Fft(Complex[] signal, int sampleCount)
+        {
+            if (sampleCount == 1)
+            {
+                return;
+            }
+
+            Complex[] even = new Complex[sampleCount / 2];
+            Complex[] odd = new Complex[sampleCount / 2];
+
+            for (int i = 0; i < sampleCount; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    even[i / 2] = signal[i];
+                }
+                else
+                {
+                    odd[(i - 1) / 2] = signal[i];
+                }
+            }
+
+            Fft(even, even.Length);
+            Fft(odd, odd.Length);
+
+            for (int j = 0; j < sampleCount / 2; j++)
+            {
+                Complex t = Complex.FromPolarCoordinates(1.0, -2 * Math.PI * j / sampleCount) * odd[j];
+                signal[j] = even[j] + t;
+                signal[j + sampleCount / 2] = even[j] - t;
+            }
         }
     }
 }

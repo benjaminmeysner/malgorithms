@@ -6,7 +6,6 @@ namespace Malgorithms.Signal
 {
     using Malgorithms.Resources;
     using System;
-    using System.Collections.Generic;
     using System.Numerics;
 
     /// <summary>
@@ -14,6 +13,8 @@ namespace Malgorithms.Signal
     /// </summary>
     public class BaseFastFourierTransform
     {
+        private const double _empty = 0;
+
         /// <summary>
         /// Sanitises a <paramref name="signal" /> for <see cref="Transform({Complex[]})" />.
         /// </summary>
@@ -21,7 +22,7 @@ namespace Malgorithms.Signal
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         /// <exception cref="ArgumentNullException">Thrown if the signal is null.</exception>
-        public void SanitiseSignal(Complex[] signal)
+        public void SanitiseSignal<T>(T[] signal)
         {
             if (signal is null)
             {
@@ -33,6 +34,24 @@ namespace Malgorithms.Signal
                 // May support this in future, extend array with an empty complex number.
                 throw new ArgumentException(string.Format(StandardText.SignalSampleCountNotPowerOfTwo, nameof(signal)));
             }
+        }
+
+        /// <summary>
+        /// Converts an array of <see cref="{Double}" /> to an array of <see cref="{Complex}" />.
+        /// Filling all imaginary components to zero.
+        /// </summary>
+        /// <param name="signal">The signal.</param>
+        /// <returns>
+        ///   A new Complex number array.
+        /// </returns>
+        protected static Complex[] DoubleToComplex(double[] signal)
+        {
+            Complex[] newSignal = new Complex[signal.Length];
+            for (int i = 0; i < signal.Length; i++)
+            {
+                newSignal[i] = new Complex(signal[i], _empty);
+            }
+            return newSignal;
         }
 
         /// <summary>

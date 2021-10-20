@@ -22,13 +22,13 @@ namespace Malgorithms.Signal
         public Complex[] Transform(Complex[] signal);
 
         /// <summary>
-        /// Malgorithms.Signal.IFourierTransform.InverseTransform
+        /// Malgorithms.Signal.IFourierTransform.Transform
         /// </summary>
         /// <param name="signal">The signal.</param>
         /// <returns>Array of <see cref="{Complex}"/>, the DFT of <paramref name="signal"/></returns>
         /// <remarks>
         /// Comments are made above each class implementation.
         /// </remarks>
-        public Complex[] InverseTransform(Complex[] signal);
+        public Complex[] Transform(double[] signal);
     }
 }

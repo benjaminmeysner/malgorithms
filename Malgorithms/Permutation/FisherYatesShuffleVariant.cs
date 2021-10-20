@@ -2,7 +2,7 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.Enums
+namespace Malgorithms.Permutation
 {
     /// <summary>
     /// Malgorithms.Enums.FisherYatesShuffleVariant

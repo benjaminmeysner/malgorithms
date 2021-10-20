@@ -129,4 +129,7 @@
   <data name="ParameterValueInvalid" xml:space="preserve">
     <value>Parameter {0} has an invalid value.</value>
   </data>
+  <data name="SignalSampleCountNotPowerOfTwo" xml:space="preserve">
+    <value>The signal has a sample count which is not a power of 2.</value>
+  </data>
 </root>

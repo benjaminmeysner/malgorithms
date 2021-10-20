@@ -2,7 +2,7 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Sort
 {
     using Malgorithms.Sort.Comparison;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +10,7 @@ namespace Malgorithms.UnitTests
     using System.Linq;
 
     /// <summary>
-    /// Malgorithms.UnitTests.CycleSortTests
+    /// Malgorithms.UnitTests.Sort.CycleSortTests
     /// </summary>
     [TestClass]
     public class CycleSortTests

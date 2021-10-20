@@ -2,15 +2,14 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Permutation
 {
-    using Malgorithms.Enums;
     using Malgorithms.Permutation;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
 
     /// <summary>
-    /// Malgorithms.UnitTests.FisherYatesShuffleTests
+    /// Malgorithms.UnitTests.Permutation.FisherYatesShuffleTests
     /// </summary>
     [TestClass]
     public class FisherYatesShuffleTests
@@ -19,7 +18,7 @@ namespace Malgorithms.UnitTests
         public void FisherYatesShuffle_OriginalPermute_LooksOk()
         {
             int[] source = Enumerable.Range(0, 10).ToArray();
-            var fys = new FisherYatesShuffle(x => { x.Variant = Enums.FisherYatesShuffleVariant.Original; });
+            var fys = new FisherYatesShuffle(x => { x.Variant = FisherYatesShuffleVariant.Original; });
 
             fys.Permute(source);
         }
@@ -28,7 +27,7 @@ namespace Malgorithms.UnitTests
         public void FisherYatesShuffle_ModernPermute_LooksOk()
         {
             int[] source = Enumerable.Range(0, 10).ToArray();
-            var fys = new FisherYatesShuffle(x => { x.Variant = Enums.FisherYatesShuffleVariant.Modern; });
+            var fys = new FisherYatesShuffle(x => { x.Variant = FisherYatesShuffleVariant.Modern; });
 
             fys.Permute(source);
         }

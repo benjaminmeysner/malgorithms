@@ -4,7 +4,6 @@
 
 namespace Malgorithms.Search
 {
-    using Malgorithms.Enums;
     using Malgorithms.Search.Options;
     using System;
     using System.Collections.Generic;

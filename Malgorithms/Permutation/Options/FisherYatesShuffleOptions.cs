@@ -4,8 +4,6 @@
 
 namespace Malgorithms.Permutation.Options
 {
-    using Malgorithms.Enums;
-
     /// <summary>
     /// Malgorithms.Permutation.Options.FisherYatesShuffleOptions
     /// </summary>

@@ -4,8 +4,6 @@
 
 namespace Malgorithms.Sort.Comparison.Options
 {
-    using Malgorithms.Enums;
-
     /// <summary>
     /// Malgorithms.Sort.Comparison.Options.MergeSortOptions
     /// </summary>

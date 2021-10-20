@@ -2,16 +2,16 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Sort
 {
-    using Malgorithms.Enums;
     using Malgorithms.Sort.Comparison;
+    using Malgorithms.UnitTests.Helpers;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Linq;
 
     /// <summary>
-    /// Malgorithms.UnitTests.QuickSortTests
+    /// Malgorithms.UnitTests.Sort.QuickSortTests
     /// </summary>
     [TestClass]
     public class QuickSortTests

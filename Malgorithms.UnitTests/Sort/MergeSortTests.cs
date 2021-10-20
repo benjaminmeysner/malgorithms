@@ -2,7 +2,7 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Sort
 {
     using Malgorithms.Sort.Comparison;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +10,7 @@ namespace Malgorithms.UnitTests
     using System.Linq;
 
     /// <summary>
-    /// Malgorithms.UnitTests.MergeSortTests
+    /// Malgorithms.UnitTests.Sort.MergeSortTests
     /// </summary>
     [TestClass]
     public class MergeSortTests
@@ -20,7 +20,7 @@ namespace Malgorithms.UnitTests
         {
             int[] source = Enumerable.Repeat(0, 100).Select(i => new Random().Next(0, 100)).ToArray();
             int[] expected = new int[source.Length];
-            var ms = new MergeSort(x => { x.Variant = Enums.MergeSortVariant.TopDown; });
+            var ms = new MergeSort(x => { x.Variant = MergeSortVariant.TopDown; });
             Array.Copy(source, expected, source.Length);
             Array.Sort(expected);
 
@@ -34,7 +34,7 @@ namespace Malgorithms.UnitTests
         {
             int[] source = Enumerable.Repeat(0, 100).Select(i => new Random().Next(0, 100)).ToArray();
             int[] expected = new int[source.Length];
-            var ms = new MergeSort(x => { x.Variant = Enums.MergeSortVariant.TopDown; });
+            var ms = new MergeSort(x => { x.Variant = MergeSortVariant.TopDown; });
             Array.Copy(source, expected, source.Length);
             Array.Sort(expected);
 

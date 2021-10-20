@@ -116,13 +116,13 @@ namespace Malgorithms.Permutation
             {
                 switch (_options.Variant)
                 {
-                    case Enums.FisherYatesShuffleVariant.Modern:
+                    case FisherYatesShuffleVariant.Modern:
                         Modern(source, low, high);
                         break;
-                    case Enums.FisherYatesShuffleVariant.Original:
+                    case FisherYatesShuffleVariant.Original:
                         Original(source, low, high);
                         break;
-                    case Enums.FisherYatesShuffleVariant.Sattolo:
+                    case FisherYatesShuffleVariant.Sattolo:
                         throw new NotImplementedException(StandardText.AlgorithmNotImplemented);
                 }
             }

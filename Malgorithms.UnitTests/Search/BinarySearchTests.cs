@@ -2,15 +2,14 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Search
 {
     using Malgorithms.Search;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
     using System.Linq;
 
     /// <summary>
-    /// Malgorithms.UnitTests.BinarySearchTests
+    /// Malgorithms.UnitTests.Search.BinarySearchTests
     /// </summary>
     [TestClass]
     public class BinarySearchTests
@@ -37,7 +36,7 @@ namespace Malgorithms.UnitTests
         {
             int[] source = Enumerable.Range(10, 50).ToArray();
 
-            int i = new BinarySearch(x => { x.Variant = Enums.BinarySearchVariant.Exponential; }).IndexOf(source, search);
+            int i = new BinarySearch(x => { x.Variant = BinarySearchVariant.Exponential; }).IndexOf(source, search);
 
             Assert.IsTrue(i == expected);
         }
@@ -65,7 +64,7 @@ namespace Malgorithms.UnitTests
         {
             int[] source = Enumerable.Range(0, 50).ToArray();
 
-            int i = new BinarySearch(x => { x.Range = (10, 30); x.Variant = Enums.BinarySearchVariant.Exponential; }).IndexOf(source, search);
+            int i = new BinarySearch(x => { x.Range = (10, 30); x.Variant = BinarySearchVariant.Exponential; }).IndexOf(source, search);
 
             Assert.IsTrue(i == expected);
         }

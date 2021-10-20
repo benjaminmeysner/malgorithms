@@ -2,14 +2,15 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Graph
 {
     using Malgorithms.Graph;
+    using Malgorithms.UnitTests.Helpers;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
 
     /// <summary>
-    /// Malgorithms.UnitTests.BreadthFirstSearchUnitTests
+    /// Malgorithms.UnitTests.Graph.BreadthFirstSearchUnitTests
     /// </summary>
     [TestClass]
     public class BreadthFirstSearchUnitTests

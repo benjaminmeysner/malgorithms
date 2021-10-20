@@ -95,5 +95,14 @@ namespace Malgorithms.Resources {
                 return ResourceManager.GetString("ParameterValueInvalid", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The signal has a sample count which is not a power of 2..
+        /// </summary>
+        internal static string SignalSampleCountNotPowerOfTwo {
+            get {
+                return ResourceManager.GetString("SignalSampleCountNotPowerOfTwo", resourceCulture);
+            }
+        }
     }
 }

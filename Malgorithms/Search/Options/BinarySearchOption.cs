@@ -4,8 +4,6 @@
 
 namespace Malgorithms.Search.Options
 {
-    using Malgorithms.Enums;
-
     /// <summary>
     /// Malgorithms.Search.Options.BinarySortOption
     /// </summary>

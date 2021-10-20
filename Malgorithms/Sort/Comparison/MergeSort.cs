@@ -122,13 +122,13 @@ namespace Malgorithms.Sort.Comparison
             {
                 switch (_options.Variant)
                 {
-                    case Enums.MergeSortVariant.TopDown:
+                    case MergeSortVariant.TopDown:
                         T[] b = new T[source.Length];
                         Array.Copy(source, b, source.Length);
                         TopDownSort(b, low, high, source, comparison);
                         break;
-                    case Enums.MergeSortVariant.Natural:
-                    case Enums.MergeSortVariant.BottomUp:
+                    case MergeSortVariant.Natural:
+                    case MergeSortVariant.BottomUp:
                         throw new NotImplementedException(StandardText.AlgorithmNotImplemented);
                 }
             }

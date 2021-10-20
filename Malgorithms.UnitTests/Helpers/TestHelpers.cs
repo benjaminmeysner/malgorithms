@@ -2,13 +2,13 @@
 // Copyright (c) Ben Thomas Meysner. All rights reserved.
 // </copyright>
 
-using System;
-using System.Linq;
-
-namespace Malgorithms.UnitTests
+namespace Malgorithms.UnitTests.Helpers
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
-    /// Malgorithms.UnitTests.TestHelpers
+    /// Malgorithms.UnitTests.Helpers.TestHelpers
     /// </summary>
     public static class TestHelpers
     {

@@ -4,7 +4,6 @@
 
 namespace Malgorithms.Sort.Comparison
 {
-    using Malgorithms.Enums;
     using Malgorithms.Helpers;
     using Malgorithms.Sort.Comparison.Options;
     using System;

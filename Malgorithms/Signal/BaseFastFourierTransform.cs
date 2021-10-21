@@ -61,7 +61,7 @@ namespace Malgorithms.Signal
         /// <returns>
         ///   <c>true</c> if [is power of two] [the specified sample count]; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsPowerOfTwo(int sampleCount)
+        protected static bool IsPowerOfTwo(int sampleCount)
         {
             return (sampleCount != 0) && ((sampleCount & (sampleCount - 1)) == 0);
         }

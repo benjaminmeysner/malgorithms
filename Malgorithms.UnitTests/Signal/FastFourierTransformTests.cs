@@ -18,7 +18,7 @@ namespace Malgorithms.UnitTests.Signal
     [TestClass]
     public class FastFourierTransformTests
     {
-        private const double _epsilon = 0.00000001;
+        private const double _epsilon = 0.0000001;
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -90,15 +90,18 @@ namespace Malgorithms.UnitTests.Signal
         [TestMethod]
         public void FastFourierTransform_FftWithInputExaminingTimeProfile_ExceptableTimeElapsed()
         {
-            double[] testData = TestHelpers.GenerateRandomDoubles(131072, -1000.0000, 1000.0000);
+            double[] testData = TestHelpers.GenerateRandomDoubles(2097152, -1000.0000, 1000.0000);
             double[] testDataFftwFormat = TestHelpers.FftDataInFftwFormat(testData);
             Complex[] expected = new Complex[testData.Length];
             Complex[] result = null;
             IPinnedArray<double> fftwin = new PinnedArray<double>(testDataFftwFormat);
             using FftwArrayComplex output = new(DFT.GetComplexBufferSize(fftwin.GetSize()));
 
+            // No parallelism on input size 2 ^ 21 = 1366ms
+            // Parallel on input size > 2 ^ 21 = 609ms
+
             TestHelpers.TimeMethod(() => result = new FastFourierTransform().Fft(testData), out var malgFft);
-            TestHelpers.TimeMethod(() => DFT.FFT(fftwin, output), out var fftwFft);
+            //TestHelpers.TimeMethod(() => DFT.FFT(fftwin, output), out var fftwFft);
 
             TestHelpers.FftwArrayComplexToComplex(output, expected);
             CollectionAssert.AreEqual(result, expected, new ComplexEpsilonComparer(_epsilon));

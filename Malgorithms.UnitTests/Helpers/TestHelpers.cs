@@ -8,6 +8,7 @@ namespace Malgorithms.UnitTests.Helpers
     using Microsoft.VisualBasic.FileIO;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Numerics;
 
@@ -29,6 +30,35 @@ namespace Malgorithms.UnitTests.Helpers
                 objects[i] = new MalgorithmUnitTestObject { Id = new Random().Next(int.MinValue, int.MaxValue), Name = RandomString(6) };
             }
             return objects;
+        }
+
+        /// <summary>
+        /// Generates the objects with random values.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <returns></returns>
+        public static void TimeMethod(Action method, out long milliseconds)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            method.Invoke();
+            sw.Stop();
+            milliseconds = sw.ElapsedMilliseconds;
+        }
+
+        /// <summary>
+        /// Generates the objects with random values.
+        /// </summary>
+        /// <param name="amount">The amount.</param>
+        /// <returns></returns>
+        public static double[] GenerateRandomDoubles(int amount, double min, double max)
+        {
+            List<double> doubles = new();
+            for (int i = 0; i < amount; i++)
+            {
+                doubles.Add(new Random().NextDouble() * (max - min) + min);
+            }
+            return doubles.ToArray();
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace Malgorithms.Signal
     /// <summary>
     /// Malgorithms.Signal.IFourierTransform
     /// </summary>
-    public interface IFourierTransform
+    public interface IFastFourierTransform
     {
         /// <summary>
         /// Malgorithms.Signal.IFourierTransform.Transform
@@ -19,16 +19,6 @@ namespace Malgorithms.Signal
         /// <remarks>
         /// Comments are made above each class implementation.
         /// </remarks>
-        public Complex[] Transform(Complex[] signal);
-
-        /// <summary>
-        /// Malgorithms.Signal.IFourierTransform.Transform
-        /// </summary>
-        /// <param name="signal">The signal.</param>
-        /// <returns>Array of <see cref="{Complex}"/>, the DFT of <paramref name="signal"/></returns>
-        /// <remarks>
-        /// Comments are made above each class implementation.
-        /// </remarks>
-        public Complex[] Transform(double[] signal);
+        public Complex[] Fft(double[] signal);
     }
 }

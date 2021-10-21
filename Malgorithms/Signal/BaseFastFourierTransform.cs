@@ -22,18 +22,9 @@ namespace Malgorithms.Signal
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
         /// <exception cref="ArgumentNullException">Thrown if the signal is null.</exception>
-        public void SanitiseSignal<T>(T[] signal)
+        protected static void TryZeroPadSignal(ref double[] signal)
         {
-            if (signal is null)
-            {
-                throw new ArgumentNullException(string.Format(StandardText.ParameterCannotBeNull, nameof(signal)));
-            }
-
-            if (!IsPowerOfTwo(signal.Length))
-            {
-                // May support this in future, extend array with an empty complex number.
-                throw new ArgumentException(string.Format(StandardText.SignalSampleCountNotPowerOfTwo, nameof(signal)));
-            }
+            Array.Resize(ref signal, NextPowerOfTwo(signal.Length));
         }
 
         /// <summary>
@@ -44,14 +35,44 @@ namespace Malgorithms.Signal
         /// <returns>
         ///   A new Complex number array.
         /// </returns>
-        protected static Complex[] DoubleToComplex(double[] signal)
+        protected static Complex[] Initialise(ref double[] signal)
         {
+            if (signal is null)
+            {
+                throw new ArgumentNullException(StandardText.ParameterCannotBeNull);
+            }
+
+            if (!IsPowerOfTwo(signal.Length))
+            {
+                TryZeroPadSignal(ref signal);
+            }
+
             Complex[] newSignal = new Complex[signal.Length];
             for (int i = 0; i < signal.Length; i++)
             {
                 newSignal[i] = new Complex(signal[i], _empty);
             }
+
             return newSignal;
+        }
+
+        /// <summary>
+        /// Converts an array of <see cref="{Double}" /> to an array of <see cref="{Complex}" />.
+        /// Filling all imaginary components to zero.
+        /// </summary>
+        /// <param name="signal">The signal.</param>
+        /// <returns>
+        ///   A new Complex number array.
+        /// </returns>
+        protected static Complex[] CreateComplexArray(double[] signal, out Complex[] complexSignal)
+        {
+            complexSignal = new Complex[signal.Length];
+            for (int i = 0; i < signal.Length; i++)
+            {
+                complexSignal[i] = new Complex(signal[i], _empty);
+            }
+
+            return complexSignal;
         }
 
         /// <summary>
@@ -64,6 +85,22 @@ namespace Malgorithms.Signal
         protected static bool IsPowerOfTwo(int sampleCount)
         {
             return (sampleCount != 0) && ((sampleCount & (sampleCount - 1)) == 0);
+        }
+
+        /// <summary>
+        /// Returns the next power of two up from a number.
+        /// </summary>
+        /// <param name="number">A number.</param>
+        /// <returns>Next power of 2</returns>
+        protected static int NextPowerOfTwo(int number)
+        {
+            number--;
+            number |= number >> 1;
+            number |= number >> 2;
+            number |= number >> 4;
+            number |= number >> 8;
+            number |= number >> 16;
+            return ++number;
         }
     }
 }

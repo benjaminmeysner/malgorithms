@@ -24,18 +24,18 @@ namespace Malgorithms.UnitTests.Signal
         [ExpectedException(typeof(ArgumentNullException))]
         public void FastFourierTransform_FftNullInput_Throws() // Currently Throws, should zero pad!
         {
-            Complex[] result = new FastFourierTransform().Fft((double[])null);
+            Complex[] result = new FastFourierTransform().Fft(null);
 
             CollectionAssert.AreEqual(result, new[] { 0.0 } /* Arbitrary */, new ComplexEpsilonComparer(_epsilon));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void FastFourierTransform_FftWithInputNotPowerOfTwo_Throws() // Currently Throws, should zero pad!
+        public void FastFourierTransform_FftWithInputNotPowerOfTwo_OutputSizeIsNextPowerOfTwoUp()
         {
-            Complex[] result = new FastFourierTransform().Fft(new[] { 0.0, 0.0, 0.0 });
+            Complex[] result = new FastFourierTransform().Fft(new[] { 0.75, 0.66, 0.45 });
 
-            CollectionAssert.AreEqual(result, new[] { 0.0 } /* Arbitrary */, new ComplexEpsilonComparer(_epsilon));
+            Assert.AreEqual(result.Length, 4);
         }
 
         [TestMethod]
@@ -116,6 +116,10 @@ namespace Malgorithms.UnitTests.Signal
             // Ryzen 3900x 3.8GHZ Windows 10 16GB ram
             // No parallelism on input size = 2 ^ 21 = 1042ms
             // Parallel on input size = 2 ^ 21 = 507ms
+            // Parallel on input size = (2 ^ 21) + 1 = 850ms ## Not a 2^N input!
+
+            // NOTE * Currently unable to test input lengths != 2^N due to FFTW not zero padding
+            // their input sequences and this currently does.
         }
     }
 }

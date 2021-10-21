@@ -13,7 +13,8 @@ namespace Malgorithms.Signal
 
     /// <summary>
     /// Malgorithms.Signal.FastFourierTransform
-    /// <para/>TODO: #1 Allow for signal length / sample count not a power of 2 
+    /// <para/>TODO: #1 Input length != 2^N attained by other means than zero padding
+    /// <para/>See https://math.stackexchange.com/questions/77118/non-power-of-2-ffts
     /// This could be attained by not using radix2 DIT but check signal length and use either radix3,radix5 etc to
     /// support it.
     /// </summary>
@@ -48,13 +49,11 @@ namespace Malgorithms.Signal
         public Complex[] Fft(double[] signal)
         {
             Contract.Requires(signal != null);
-
-            SanitiseSignal(signal);
-            Complex[] signalCopy = DoubleToComplex(signal);
-            FftRecursive(signalCopy, signalCopy.Length);
-
+            Initialise(ref signal);
+            CreateComplexArray(signal, out Complex[] complexSignal);
+            FftRecursive(complexSignal, complexSignal.Length);
             Contract.EndContractBlock();
-            return signalCopy;
+            return complexSignal;
         }
 
         /// <summary>

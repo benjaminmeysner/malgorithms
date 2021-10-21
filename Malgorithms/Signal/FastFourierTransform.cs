@@ -13,11 +13,13 @@ namespace Malgorithms.Signal
 
     /// <summary>
     /// Malgorithms.Signal.FastFourierTransform
-    /// <para/>TODO: #1 Allow for signal length / sample count not a power of 2 (zero pad the signal end).
-    /// <para/>TODO: #2 Multi-thread on input sizes > 2048
+    /// <para/>TODO: #1 Allow for signal length / sample count not a power of 2 
+    /// This could be attained by not using radix2 DIT but check signal length and use either radix3,radix5 etc to
+    /// support it.
     /// </summary>
     public class FastFourierTransform : BaseFastFourierTransform, IFastFourierTransform
     {
+        // Precompute 2π in the formula 2πik/N.
         private const double ProductOfMinusTwoPi = -6.28318530718;
         private readonly FastFourierTransformOptions _options;
 
